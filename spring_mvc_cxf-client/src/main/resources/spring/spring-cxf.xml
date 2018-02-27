@@ -19,5 +19,13 @@
             id="userClient"
             serviceClass="com.rain6.cxf.service.TestWebService"
             address="http://localhost:8092/webservice/testService">
+	<jaxws:outInterceptors>
+            <bean class="AddUserInterceptor">
+                <constructor-arg name="name" value="kevin"></constructor-arg>
+                <constructor-arg name="password" value="123456"></constructor-arg>
+            </bean>
+            <bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"></bean>
+            <bean class="org.apache.cxf.interceptor.LoggingInInterceptor"></bean>
+        </jaxws:outInterceptors>
     </jaxws:client>
 </beans>
