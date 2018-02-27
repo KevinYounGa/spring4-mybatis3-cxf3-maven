@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rain6.cxf.mapper.LawyerMapper" >
+  <resultMap id="BaseResultMap" type="com.rain6.cxf.pojo.Lawyer" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="VARCHAR" />
+    <result column="photo" property="photo" jdbcType="VARCHAR" />
+    <result column="certificate_number" property="certificateNumber" jdbcType="VARCHAR" />
+    <result column="qualification_number" property="qualificationNumber" jdbcType="VARCHAR" />
+    <result column="certificate_type" property="certificateType" jdbcType="VARCHAR" />
+    <result column="work_date" property="workDate" jdbcType="VARCHAR" />
+    <result column="office_id" property="officeId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, sex, education, age, photo, certificate_number, qualification_number, certificate_type, 
+    work_date, office_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_lawyer
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from t_lawyer
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.rain6.cxf.pojo.Lawyer" >
+    insert into t_lawyer (id, name, sex, 
+      education, age, photo, 
+      certificate_number, qualification_number, 
+      certificate_type, work_date, office_id
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, 
+      #{certificateNumber,jdbcType=VARCHAR}, #{qualificationNumber,jdbcType=VARCHAR}, 
+      #{certificateType,jdbcType=VARCHAR}, #{workDate,jdbcType=VARCHAR}, #{officeId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.rain6.cxf.pojo.Lawyer" >
+    insert into t_lawyer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="photo != null" >
+        photo,
+      </if>
+      <if test="certificateNumber != null" >
+        certificate_number,
+      </if>
+      <if test="qualificationNumber != null" >
+        qualification_number,
+      </if>
+      <if test="certificateType != null" >
+        certificate_type,
+      </if>
+      <if test="workDate != null" >
+        work_date,
+      </if>
+      <if test="officeId != null" >
+        office_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null" >
+        #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationNumber != null" >
+        #{qualificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateType != null" >
+        #{certificateType,jdbcType=VARCHAR},
+      </if>
+      <if test="workDate != null" >
+        #{workDate,jdbcType=VARCHAR},
+      </if>
+      <if test="officeId != null" >
+        #{officeId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rain6.cxf.pojo.Lawyer" >
+    update t_lawyer
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null" >
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateNumber != null" >
+        certificate_number = #{certificateNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="qualificationNumber != null" >
+        qualification_number = #{qualificationNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateType != null" >
+        certificate_type = #{certificateType,jdbcType=VARCHAR},
+      </if>
+      <if test="workDate != null" >
+        work_date = #{workDate,jdbcType=VARCHAR},
+      </if>
+      <if test="officeId != null" >
+        office_id = #{officeId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rain6.cxf.pojo.Lawyer" >
+    update t_lawyer
+    set name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      certificate_number = #{certificateNumber,jdbcType=VARCHAR},
+      qualification_number = #{qualificationNumber,jdbcType=VARCHAR},
+      certificate_type = #{certificateType,jdbcType=VARCHAR},
+      work_date = #{workDate,jdbcType=VARCHAR},
+      office_id = #{officeId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

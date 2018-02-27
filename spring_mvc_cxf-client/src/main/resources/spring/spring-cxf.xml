@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://cxf.apache.org/jaxws 
+        http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <!-- CXF webservice配置 -->
+    <!-- CXF3以后，只需要引入这个配置文件即可，其他两个废弃掉了-->
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+
+
+    <!-- WebService -->
+    <!--<jaxws:endpoint id="testService"
+                    implementor="com.rain6.cxf.service.impl.TestWebServiceImpl"
+                    address="/testService"/>-->
+    <jaxws:client
+            id="userClient"
+            serviceClass="com.rain6.cxf.service.TestWebService"
+            address="http://localhost:8092/webservice/testService">
+    </jaxws:client>
+</beans>
